@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:validus/model/stocks_response.dart';
@@ -21,8 +19,6 @@ class StockList extends StatelessWidget {
       'Data not found',
       style: TextStyles.sp20(color: Palette.colorWhite),
     ):ListView.builder(
-      //shrinkWrap: true,
-      //physics: const NeverScrollableScrollPhysics(),
       itemCount: controller.stockList.length,
       itemBuilder: (context, index) {
         return getIteam(controller.stockList[index]);
@@ -54,26 +50,21 @@ class StockList extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            getPrice('Last trade', stockData.lastTrade ?? ''),
+            getPrice('Last trade', stockData.lastTradeString ?? ''),
             const SizedBox(
               height: 8,
             ),
-            getPrice('Extended hrs', stockData.extendedHours ?? ''),
+            getPrice('Extended hrs', stockData.extendedHoursString ?? ''),
             const SizedBox(
               height: 8,
             ),
             getPrice(
                 '% Change',
-                (((stockData.price ?? 0) - (stockData.lastPrice ?? 0)) *
-                            100 /
-                            (stockData.lastPrice ?? 1))
-                        .toStringAsFixed(1) +
+                stockData.changePercentage! +
                     '%',
                 isChange:
-                    ((stockData.price ?? 0) - (stockData.lastPrice ?? 0)) > 0,
-                color: ((stockData.price ?? 0) - (stockData.lastPrice ?? 0)) > 0
-                    ? Palette.success
-                    : Palette.colorError),
+                    stockData.isProfit,
+                color: stockData.color!,)
           ],
         ),
       ),

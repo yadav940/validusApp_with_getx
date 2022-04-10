@@ -1,4 +1,9 @@
 
+import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
+
+import '../ui/usefull/palette.dart';
+
 class StocksResponse {
   bool? success;
   int? statusCode;
@@ -48,8 +53,13 @@ class Data {
   double? price;
   double? dayGain;
   String? lastTrade;
+  String? lastTradeString;
   String? extendedHours;
+  String? extendedHoursString;
   double? lastPrice;
+  String? changePercentage;
+  bool? isProfit;
+  Color? color;
 
   Data(
       {this.id,
@@ -66,8 +76,26 @@ class Data {
     price = json['price'];
     dayGain = json['dayGain'];
     lastTrade = json['lastTrade'];
+    lastTradeString = convertTime(json['lastTrade']);
     extendedHours = json['extendedHours'];
+    extendedHoursString = convertTime(json['extendedHours']);
     lastPrice = json['lastPrice'];
+    changePercentage= (((price ?? 0) - (lastPrice ?? 0)) *
+        100 /
+        (lastPrice ?? 1))
+        .toStringAsFixed(1);
+    isProfit=((price ?? 0) - (lastPrice ?? 0)) > 0;
+    if(((price ?? 0) - (lastPrice ?? 0)) > 0){
+      color= Palette.success;
+
+    }else{
+      color=Palette.colorError;
+    }
+  }
+
+  String convertTime(String data){
+    var date = DateTime.fromMicrosecondsSinceEpoch(int.parse(data));
+    return DateFormat('hh:mm a').format(date);
   }
 
   Map<String, dynamic> toJson() {

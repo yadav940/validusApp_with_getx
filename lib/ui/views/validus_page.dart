@@ -1,9 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:validus/ui/views/profile_details.dart';
 import 'package:validus/ui/views/stock_list.dart';
 
 import '../../controller/validus_controller.dart';
@@ -76,11 +75,6 @@ class _ValidusPageState extends State<ValidusPage> {
   Widget get getBody {
     return controller.selectedIndex.value == 0
         ? StockList(controller)
-        : Container(
-            child: Text(
-              'Pr0file',
-              style: TextStyles.sp18(color: Colors.white),
-            ),
-          );
+        : ProfileDetails(controller);
   }
 }

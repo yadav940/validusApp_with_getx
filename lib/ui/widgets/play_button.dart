@@ -1,8 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../usefull/palette.dart';
-import '../usefull/styles/text_styles.dart';
 
 class PlayButton extends StatelessWidget {
   const PlayButton({Key? key, this.height=30}) : super(key: key);

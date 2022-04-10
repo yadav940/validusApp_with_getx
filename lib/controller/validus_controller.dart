@@ -1,6 +1,5 @@
 
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/status/http_status.dart';
 import 'package:validus/model/stocks_response.dart';
 
 import '../service/validus_service.dart';
@@ -14,7 +13,6 @@ class ValidusController extends GetxController{
   List<Data> stockList=[];
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     getStocksResponse();
   }
@@ -39,6 +37,7 @@ class ValidusController extends GetxController{
     });
 
   }
+
 
 
 }
