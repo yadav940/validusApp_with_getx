@@ -11,14 +11,7 @@ import '../../utils/asset_const.dart';
 import '../usefull/palette.dart';
 import '../usefull/styles/text_styles.dart';
 
-class ValidusPage extends StatefulWidget {
-  const ValidusPage({Key? key}) : super(key: key);
-
-  @override
-  State<ValidusPage> createState() => _ValidusPageState();
-}
-
-class _ValidusPageState extends State<ValidusPage> {
+class ValidusPage extends StatelessWidget {
   var controller = Get.put(ValidusController());
   var selectedItemColor = const Color(0xFFFFB802);
   var unselectedItemColor = const Color(0xFFFFFFFF);

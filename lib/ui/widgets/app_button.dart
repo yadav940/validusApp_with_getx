@@ -4,7 +4,6 @@ import '../usefull/palette.dart';
 import '../usefull/styles/text_styles.dart';
 
 class AppButton extends StatelessWidget {
-  //const AppButton({Key? key}) : super(key: key);
   final VoidCallback onPressed;
   final String text;
   final TextStyle? textStyle;
@@ -49,65 +48,9 @@ class AppButton extends StatelessWidget {
                   ),
                 ),
 
-            /*onPressed: _changeText,
-        color: Colors.red,
-        textColor: Colors.white,
-        padding: EdgeInsets.all(8.0),
-        splashColor: Colors.grey,*/
           ),
         ),
       ],
-    );
-  }
-}
-
-extension button on String {
-  Widget get getButton {
-    return AppButton(
-      onPressed: () {},
-      text: this,
-    );
-  }
-}
-
-class AppButtonWithBorder extends StatelessWidget {
-  final String? text;
-  final TextStyle? textStyle;
-  final Color? color;
-  final VoidCallback? onPressed;
-  final double? radius;
-  final Widget? child;
-  final double? height;
-
-  AppButtonWithBorder(
-      {this.text,
-      this.textStyle,
-      this.color,
-      this.onPressed,
-      this.child,
-      this.height,
-      this.radius});
-
-  @override
-  Widget build(BuildContext context) {
-    return AppButton(
-      text: text??'',
-      textStyle: TextStyles.sp16(
-          color: color??Palette.buttonBg, fontWeight: FontWeight.w700),
-      onPressed: onPressed ?? () {},
-      style: ElevatedButton.styleFrom(
-        side: const BorderSide(width: 0.5, color: Palette.buttonBg),
-        elevation: 0,
-        primary: Palette.colorWhite,
-        // background
-        onPrimary: Palette.colorWhite,
-        // foreground
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radius ?? 12.0),
-        ),
-      ),
-      child: child,
-      height: height,
     );
   }
 }

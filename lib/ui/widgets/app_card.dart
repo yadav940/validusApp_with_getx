@@ -16,7 +16,6 @@ class AppCard extends StatelessWidget {
       child: Container(
         color: Palette.cardBg,
         padding: padding16,
-
         child: child,
       ),
     );

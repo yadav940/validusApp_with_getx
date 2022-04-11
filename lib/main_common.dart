@@ -15,15 +15,13 @@ Future<void> mainCommon() async {
 }
 
 GetMaterialApp get _getMaterialApp => GetMaterialApp(
-      title: 'YuvaPay',
+      title: 'Validus',
       debugShowCheckedModeBanner: false,
       locale: Get.deviceLocale,
       fallbackLocale:
           const Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
       theme: _themeData,
       defaultTransition: Transition.rightToLeftWithFade,
-
-
       home: ValidusPage(),
     );
 
@@ -33,7 +31,6 @@ ThemeData get _themeData => ThemeData(
       fontFamily: 'Test Founders Grotesk',
       scaffoldBackgroundColor: Color(0xFF171734),
       accentColor: Color(0xFFFFC700),
-
       inputDecorationTheme: inputDecorationTheme,
       iconTheme: IconThemeData(color: Color(0xFFFFC700)),
       textTheme: textTheme,
@@ -53,10 +50,7 @@ InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
       ),
     );
 
-/// [caption] for form label,
-/// [bodyText1] for form text, i.e. inputText, dropdown text etc,
 TextTheme get textTheme => const TextTheme(
-      // Used for Form Labels
       caption: TextStyle(
         height: 1.1,
         fontSize: 10,
@@ -70,7 +64,6 @@ TextTheme get textTheme => const TextTheme(
         color: Color(0xFFD2D2D2),
         fontWeight: FontWeight.w400,
       ),
-
       bodyText2: TextStyle(
         fontSize: 14,
         height: 17 / 14,
