@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:validus/model/stocks_response.dart';
 import 'package:validus/ui/usefull/palette.dart';
+import 'package:validus/ui/widgets/app_card.dart';
+import 'package:validus/utils/string_const.dart';
 
 import '../../controller/validus_controller.dart';
 import '../usefull/styles/text_styles.dart';
@@ -16,7 +18,7 @@ class StockList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return controller.stockList.isEmpty?Text(
-      'Data not found',
+      StringConst.dataNotFound,
       style: TextStyles.sp20(color: Palette.colorWhite),
     ):ListView.builder(
       itemCount: controller.stockList.length,
@@ -26,47 +28,42 @@ class StockList extends StatelessWidget {
     );
   }
 
-  Widget getIteam(Data stockData) {
-    return Padding(
-      padding: padding16,
-      child: Container(
-        color: Palette.cardBg,
-        padding: padding16,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              stockData.stockName ?? '',
-              style: TextStyles.sp20(color: Palette.colorWhite),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            getPrice('Price', (stockData.price ?? 0).toString()),
-            const SizedBox(
-              height: 8,
-            ),
-            getPrice('Day gain', (stockData.dayGain ?? 0).toString()),
-            const SizedBox(
-              height: 8,
-            ),
-            getPrice('Last trade', stockData.lastTradeString ?? ''),
-            const SizedBox(
-              height: 8,
-            ),
-            getPrice('Extended hrs', stockData.extendedHoursString ?? ''),
-            const SizedBox(
-              height: 8,
-            ),
-            getPrice(
-                '% Change',
-                stockData.changePercentage! +
-                    '%',
-                isChange:
-                    stockData.isProfit,
-                color: stockData.color!,)
-          ],
-        ),
+  Widget getIteam(DataResponce stockData) {
+    return AppCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            stockData.stockName ?? '',
+            style: TextStyles.sp20(color: Palette.colorWhite),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          getPrice(StringConst.price, (stockData.price ?? 0).toString()),
+          const SizedBox(
+            height: 8,
+          ),
+          getPrice(StringConst.dayGain, (stockData.dayGain ?? 0).toString()),
+          const SizedBox(
+            height: 8,
+          ),
+          getPrice(StringConst.lastTrade, stockData.lastTradeString ?? ''),
+          const SizedBox(
+            height: 8,
+          ),
+          getPrice(StringConst.extendedhrs, stockData.extendedHoursString ?? ''),
+          const SizedBox(
+            height: 8,
+          ),
+          getPrice(
+              '% Change',
+              stockData.changePercentage! +
+                  '%',
+              isChange:
+                  stockData.isProfit,
+              color: stockData.color!,)
+        ],
       ),
     );
   }

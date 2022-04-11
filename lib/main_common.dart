@@ -3,12 +3,14 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:validus/ui/usefull/palette.dart';
 import 'package:validus/ui/views/validus_page.dart';
 
 Future<void> mainCommon() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   runApp(_getMaterialApp);
 }
 
@@ -20,17 +22,17 @@ GetMaterialApp get _getMaterialApp => GetMaterialApp(
           const Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
       theme: _themeData,
       defaultTransition: Transition.rightToLeftWithFade,
+
+
       home: ValidusPage(),
     );
 
 ThemeData get _themeData => ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      //primarySwatch: Common.createMaterialColor(Palette.colorPrimary),
       canvasColor: Color(0xFF171734),
-      //background: #171734;
       fontFamily: 'Test Founders Grotesk',
       scaffoldBackgroundColor: Color(0xFF171734),
-      //background: #171734;
+      accentColor: Color(0xFFFFC700),
 
       inputDecorationTheme: inputDecorationTheme,
       iconTheme: IconThemeData(color: Color(0xFFFFC700)),
@@ -44,25 +46,6 @@ InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
           width: 1,
         ),
       ),
-      /*border: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Palette.colorBorders, width: 1),
-      ),
-      errorBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.red, width: 1),
-      ),
-      focusedErrorBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.red, width: 1),
-      ),
-      errorStyle: const TextStyle(
-        color: Palette.colorError,
-        fontSize: 11,
-        fontWeight: FontWeight.w400,
-        fontStyle: FontStyle.normal,
-        letterSpacing: 0.8,
-      ),
-      disabledBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: Palette.colorBorders, width: 1),
-      ),*/
       counterStyle: GoogleFonts.spaceGrotesk(
         height: 1,
         fontSize: 18,

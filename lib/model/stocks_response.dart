@@ -7,15 +7,15 @@ import '../ui/usefull/palette.dart';
 class StocksResponse {
   bool? success;
   int? statusCode;
-  List<Data>? data;
+  List<DataResponce>? data;
 
   StocksResponse({this.success, this.statusCode, this.data});
 
   factory StocksResponse.fromJson(Map<String, dynamic> json){
-    List<Data> data = <Data>[] ;
+    List<DataResponce> data = <DataResponce>[] ;
     if (json['data'] != null){
       json['data'].forEach((v) {
-        data.add(Data.fromJson(v));
+        data.add(DataResponce.fromJson(v));
       });
     }
     return StocksResponse(
@@ -47,7 +47,7 @@ class StocksResponse {
   }
 }
 
-class Data {
+class DataResponce {
   String? id;
   String? stockName;
   double? price;
@@ -61,7 +61,7 @@ class Data {
   bool? isProfit;
   Color? color;
 
-  Data(
+  DataResponce(
       {this.id,
         this.stockName,
         this.price,
@@ -70,7 +70,7 @@ class Data {
         this.extendedHours,
         this.lastPrice});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  DataResponce.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     stockName = json['stockName'];
     price = json['price'];

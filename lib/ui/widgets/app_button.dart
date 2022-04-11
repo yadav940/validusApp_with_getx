@@ -36,17 +36,16 @@ class AppButton extends StatelessWidget {
                   child: Text(
                     text,
                     style: textStyle ??
-                        TextStyles.sp16(
-                            color: Palette.colorWhite,
-                            fontWeight: FontWeight.bold),
+                        TextStyles.sp20(
+                            color: Palette.cardBg,),
                   ),
                 ),
             style: style ??
                 ElevatedButton.styleFrom(
-                  primary: Palette.buttonBackground, // background
-                  onPrimary: Palette.colorWhite, // foreground
+                  primary: Palette.buttonBg, // background
+                  onPrimary: Colors.transparent, // foreground
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
+                    borderRadius: BorderRadius.circular(4.0),
                   ),
                 ),
 
@@ -94,10 +93,10 @@ class AppButtonWithBorder extends StatelessWidget {
     return AppButton(
       text: text??'',
       textStyle: TextStyles.sp16(
-          color: color??Palette.buttonBackground, fontWeight: FontWeight.w700),
+          color: color??Palette.buttonBg, fontWeight: FontWeight.w700),
       onPressed: onPressed ?? () {},
       style: ElevatedButton.styleFrom(
-        side: const BorderSide(width: 0.5, color: Palette.buttonBackground),
+        side: const BorderSide(width: 0.5, color: Palette.buttonBg),
         elevation: 0,
         primary: Palette.colorWhite,
         // background

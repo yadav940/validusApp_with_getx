@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:validus/ui/views/profile_details.dart';
 import 'package:validus/ui/views/stock_list.dart';
+import 'package:validus/utils/string_const.dart';
 
 import '../../controller/validus_controller.dart';
 import '../../utils/asset_const.dart';
@@ -53,7 +54,7 @@ class _ValidusPageState extends State<ValidusPage> {
                 ? selectedItemColor
                 : unselectedItemColor,
           ),
-          label: 'Stocks',
+          label: StringConst.stocks,
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
@@ -62,7 +63,7 @@ class _ValidusPageState extends State<ValidusPage> {
                 ? selectedItemColor
                 : unselectedItemColor,
           ),
-          label: 'Profile',
+          label: StringConst.profile,
         ),
       ],
       currentIndex: controller.selectedIndex.value,
